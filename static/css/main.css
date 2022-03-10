@@ -1,0 +1,26 @@
+/* * {
+    background: #fafafa;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#auth-container {
+    background: #fff;
+    border-radius: 1px;
+}
+
+#main-navbar {
+    background: #fff;
+}
+.nav-icon a {
+    color: #262626;
+    font-size: 1.3em;
+    display: block;
+    margin-top: .2em;
+    margin-left: 1.2em;
+    font-weight: 100;
+}
+#user-posts #post-thumb {
+    background: #fff;
+} */
