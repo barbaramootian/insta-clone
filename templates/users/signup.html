@@ -1,0 +1,41 @@
+{% extends "users/base.html" %}
+{% load bootstrap5%}
+{% block head_content %}
+    <title>Signup</title>
+{% endblock head_content %}
+{% block container %}
+	<div class="container">
+		{% if form.errors %}
+	<p class="text-danger"> Some Information Might be Incorrect </p>
+			{{form.errors}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+	{% endif %}
+	{% if message %}
+	<p class="text-danger"> Some Information Might be Incorrect </p>
+			{{message}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+	{% endif %}
+	<form method="POST" action="{% url 'users:signup' %}">
+		{% csrf_token %}
+		{% for input in form %}
+			<div class="form-group">
+				{{input}}
+			</div>
+            <div class="invalid-feedback">
+                {% for error in input.errors %}{{ error }}{% endfor %}
+            </div>
+		{% endfor %}
+
+		<button type="submit" class="btn btn-outline-info btn-block mt-5"><i class="lead">SignUp!</i></button>	
+	</form>
+		<div class="mx-auto mt-1" style="width: 300px;">
+		<p>Already registered? <a href="{% url "users:login" %}">Sign In</a></p>
+	</div>
+	</div>
+{% endblock container %}
