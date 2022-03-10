@@ -26,4 +26,4 @@ class PostDetailView(DetailView):
     slug_field = 'id'
     slug_url_kwarg = 'post_id'
     queryset = Post.objects.all()
-    context_object_name = 'post'
+    context_object_name = 'posts'
