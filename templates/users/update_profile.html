@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% block head_content %}
+<title>@{{ user.username }} Instagram </title>
+{% endblock %}
+
+{% block container %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-6 p-4" id="profile-box">
+
+            <form action="{% url 'users:update_profile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="media">
+                    {% if user.profile.picture %}
+                        <img src="{{ user.profile.picture.url }}" class="rounded-circle" height="50" />
+                    {% else%}
+                        <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
+                    {% endif %}
+
+                    <div class="media-body">
+                        <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
+                        <p class="ml-4"><input type="file" name="picture" ></p>
+                    </div>
+                </div>
+                {% for error in form.picture.errors %}
+                	<div class="alert alert-danger"><b>Photo:</b> {{error}}</div>
+                {% endfor %}
+
+                <hr><br>
+                <button type="submit" class="btn btn-outline-info mt-5">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
