@@ -1,40 +1,16 @@
-# """Users URLs."""
+"""Users URLs."""
 
-# # Django
-# from django.urls import path
-# from django.contrib.auth.decorators import login_required
+# Django
+from django.urls import path
+from django.contrib.auth.decorators import login_required
 
-# # Views
-# from users import views
+# Views
+from users import views
 
-# urlpatterns = [
-
-#     # Management
-#     path(
-#         route='signup/',
-#         view=views.SignupView.as_view(),
-#         name='signup'
-#     ),
-#     path(
-#         route='login/',
-#         view=views.LoginView.as_view(),
-#         name='login'
-#     ),
-#     path(
-#         route='logout/',
-#         view=views.LogoutView.as_view(),
-#         name='logout'
-#     ),
-#     path(
-#         route='me/profile/',
-#         view=views.UpdateProfileView.as_view(),
-#         name='update_profile'
-#     ),
-
-#     # Posts
-#     path(
-#         route='<str:username_slug>/',
-#         view=login_required(views.UserDetailView.as_view()),
-#         name='detail'
-#     ),
-# ]
+urlpatterns = [
+    path('signup/',views.SignupView.as_view(), name='signup'),
+    path('login/',views.LoginView.as_view(),name='login'),
+    path('logout/',views.LogoutView.as_view(),name='logout'),
+    path('me/profile/',views.UpdateProfileView.as_view(),name='update_profile'),
+    path('<str:username_slug>/',login_required(views.UserDetailView.as_view()),name='detail'),
+]
